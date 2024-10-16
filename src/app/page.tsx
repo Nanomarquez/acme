@@ -3,8 +3,6 @@
 import { useState } from "react";
 
 //ICONS
-import { CiSearch } from "react-icons/ci";
-import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoOpenOutline } from "react-icons/io5";
 import { AcmeSVG, GlobalSVG } from "@/icons/acme";
@@ -42,30 +40,12 @@ import Item from "@/assets/item.jpg";
 import Image from "next/image";
 
 //FRAMER MOTION
-import { motion, AnimatePresence } from "framer-motion";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { buttons, games, menuItems } from "@/lib/constants";
+import { buttons, games } from "@/lib/constants";
 
 export default function Component() {
   const [activeTab, setActiveTab] = useState("trending");
 
   const [activeButton, setActiveButton] = useState(1);
-
-  const searchParams = useSearchParams();
-
-  const pathname = usePathname();
-
-  const { replace } = useRouter();
-
-  const handleSearch = (term: string) => {
-    const params = new URLSearchParams(searchParams);
-    if (term) {
-      params.set("search", term);
-    } else {
-      params.delete("search");
-    }
-    replace(`${pathname}?${params.toString()}`);
-  };
 
   return (
     <div className="bg-black">
