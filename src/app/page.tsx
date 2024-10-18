@@ -5,9 +5,7 @@ import { useState } from "react";
 //ICONS
 import { IoIosArrowForward } from "react-icons/io";
 import { IoOpenOutline } from "react-icons/io5";
-import { AcmeSVG, GlobalSVG } from "@/icons/acme";
-import { FaApple } from "react-icons/fa";
-import { FaWindows } from "react-icons/fa";
+import { GlobalSVG } from "@/icons/acme";
 import { HiCheckBadge } from "react-icons/hi2";
 
 //COMPONENTS
@@ -40,7 +38,14 @@ import Item from "@/assets/item.jpg";
 import Image from "next/image";
 
 //FRAMER MOTION
-import { buttons, games } from "@/lib/constants";
+import {
+  buttons,
+  collectionList,
+  games,
+  gamesList,
+  itemsList,
+} from "@/lib/constants";
+import Link from "next/link";
 
 export default function Component() {
   const [activeTab, setActiveTab] = useState("trending");
@@ -48,7 +53,7 @@ export default function Component() {
   const [activeButton, setActiveButton] = useState(1);
 
   return (
-    <div className="bg-black">
+    <>
       <main className="min-h-screen w-auto items-center flex flex-col flex-nowrap gap-[22px] h-min justify-start overflow-visible pt-[67px] pb-0 pl-0 pr-0 relative">
         {/* Hero Section */}
         <section className="items-center flex flex-none flex-col flex-wrap gap-[20px] h-min justify-start max-w-[1440px] overflow-hidden pt-[20px] px-[30px] pb-[60px] relative w-full">
@@ -153,7 +158,7 @@ export default function Component() {
 
         {/* Trending Section */}
         <section className="items-center flex flex-none flex-col flex-wrap gap-[20px] h-min justify-start max-w-[1440px] overflow-hidden pt-0 px-[30px] pb-[60px] relative w-full">
-          <div className="flex items-center flex-none flex-row flex-nowrap h-min justify-between overflow-hidden p0 relative w-full">
+          <div className="flex items-center flex-none flex-row flex-nowrap h-min justify-between overflow-hidden p-0 relative w-full">
             <div className="flex items-center flex-row gap-[15px] h-min justify-center overflow-visible p-0 relative w-min">
               <GlobalSVG className="w-[60px] h-[60px]" />
               <h3
@@ -177,75 +182,72 @@ export default function Component() {
                 Most played
               </h3>
             </div>
-            <Button className="bg-transparent hover:bg-transparent hover:opacity-50 duration-500 transition-all text-[rgb(141,141,141)] flex items-center gap-2 cursor-pointer w-fit p-0">
-              <span>View all</span>
-              <IoIosArrowForward />
-            </Button>
+            <Link href={"/games"}>
+              <Button className="bg-transparent hover:bg-transparent hover:opacity-50 duration-75 transition-all text-[rgb(141,141,141)] flex items-center gap-2 cursor-pointer w-fit p-0">
+                View all
+                <IoIosArrowForward />
+              </Button>
+            </Link>
           </div>
           <Carousel className="w-full">
             <CarouselContent>
-              {[...Array(15)].map((_, i) => (
-                <CarouselItem key={i} className="md:basis-1/2 lg:basis-1/5">
-                  <Card className="w-[281px] rounded-xl bg-[rgb(10,10,10)] text-white overflow-hidden border-0 opacity-80 transition-opacity duration-300 hover:opacity-100 cursor-pointer">
-                    <div className="relative h-32">
-                      <div className="w-full h-full relative">
-                        <Image
-                          src={Game}
-                          alt="Game background"
-                          layout="fill"
-                          objectFit="cover"
-                        />
-                        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-[rgb(10,10,10)] to-transparent"></div>
-                      </div>
-                      <div className="absolute bottom-4 left-4">
-                        <Image
-                          src={Azuki}
-                          alt="Azuki logo"
-                          width={60}
-                          height={60}
-                          className="rounded-lg border border-[#ffffff1a]"
-                        />
-                      </div>
-                    </div>
-                    <CardContent className="p-4 flex flex-col gap-1">
-                      <div className="flex gap-2 items-center">
-                        <h2 className="text-lg font-semibold">Game name</h2>
-                        <FaWindows className="text-gray-500"></FaWindows>
-                        <FaApple className="text-gray-500"></FaApple>
-                      </div>
-                      <div className="flex justify-between mb-4 gap-2">
-                        <div className="bg-zinc-900 p-2 rounded-md w-full">
-                          <p className="text-sm text-gray-400">Floor</p>
-                          <p className="font-medium">0.25 ETH</p>
+              {gamesList.map((game, i) => (
+                <Link href={`/games/${game.id}`}>
+                  <CarouselItem
+                    key={game.id}
+                    className="md:basis-1/2 lg:basis-1/5 select-none"
+                  >
+                    <Card className="w-[281px] rounded-xl bg-[rgb(10,10,10)] text-white overflow-hidden border-0 hover:brightness-125 duration-300 cursor-pointer">
+                      <div className="relative h-32">
+                        <div className="w-full h-full relative">
+                          <Image
+                            src={game.image}
+                            alt="Game background"
+                            layout="fill"
+                            objectFit="cover"
+                          />
+                          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-[rgb(10,10,10)] to-transparent"></div>
                         </div>
-                        <div className="bg-zinc-900 p-2 rounded-md w-full">
-                          <p className="text-sm text-gray-400">Volume</p>
-                          <p className="font-medium">$25.5M</p>
+                        <div className="absolute bottom-4 left-4">
+                          <Image
+                            src={game.logo}
+                            alt={game.name}
+                            width={60}
+                            height={60}
+                            className="rounded-lg border border-[#ffffff1a]"
+                          />
                         </div>
                       </div>
-                      <div className="flex gap-2">
-                        <Badge
-                          variant="secondary"
-                          className="bg-zinc-800 text-gray-400 p-1"
-                        >
-                          Adventure
-                        </Badge>
-                        <Badge
-                          variant="secondary"
-                          className="bg-zinc-800 text-gray-400 p-1"
-                        >
-                          MMO
-                        </Badge>
-                        <Badge
-                          variant="secondary"
-                          className="bg-zinc-800 text-gray-400 p-1"
-                        >
-                          Fun
-                        </Badge>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
+                      <CardContent className="p-4 flex flex-col gap-1">
+                        <div className="flex gap-2 items-center">
+                          <h2 className="text-lg font-semibold">{game.name}</h2>
+                          {game.platforms?.map((platform) => platform)}
+                        </div>
+                        <div className="flex justify-between mb-4 gap-2">
+                          <div className="bg-zinc-900 p-2 rounded-md w-full">
+                            <p className="text-sm text-gray-400">Floor</p>
+                            <p className="font-medium">{game.floor}</p>
+                          </div>
+                          <div className="bg-zinc-900 p-2 rounded-md w-full">
+                            <p className="text-sm text-gray-400">Volume</p>
+                            <p className="font-medium">{game.volume}</p>
+                          </div>
+                        </div>
+                        <div className="flex gap-2">
+                          {game.categories?.map((category) => (
+                            <Badge
+                              key={category}
+                              variant="secondary"
+                              className="bg-zinc-800 text-gray-400 p-1"
+                            >
+                              {category}
+                            </Badge>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                </Link>
               ))}
             </CarouselContent>
             <CarouselPrevious />
@@ -307,12 +309,20 @@ export default function Component() {
                         width={1000}
                         className="object-cover w-[42px] h-[42px] rounded-lg border border-[#ffffff1a]"
                       />
-                      <span className="text-white">{game.name}</span>
+                      <span className="text-white font-semibold">
+                        {game.name}
+                      </span>
                     </TableCell>
-                    <TableCell className="text-white">{game.floor}</TableCell>
+                    <TableCell className="text-white font-semibold">
+                      {game.floor}
+                    </TableCell>
                     <TableCell>
-                      <span className="text-white">{game.volume}</span>{" "}
-                      <span className="text-green-500">{game.percentage}</span>
+                      <span className="text-white font-semibold">
+                        {game.volume}
+                      </span>{" "}
+                      <span className="text-[rgb(0,237,146)] font-semibold">
+                        {game.percentage}
+                      </span>
                     </TableCell>
                   </TableRow>
                 ))}
@@ -349,12 +359,20 @@ export default function Component() {
                         width={1000}
                         className="object-cover w-[42px] h-[42px] rounded-lg border border-[#ffffff1a]"
                       />
-                      <span className="text-white">{game.name}</span>
+                      <span className="text-white font-semibold">
+                        {game.name}
+                      </span>
                     </TableCell>
-                    <TableCell className="text-white">{game.floor}</TableCell>
+                    <TableCell className="text-white font-semibold">
+                      {game.floor}
+                    </TableCell>
                     <TableCell>
-                      <span className="text-white">{game.volume}</span>{" "}
-                      <span className="text-green-500">{game.percentage}</span>
+                      <span className="text-white font-semibold">
+                        {game.volume}
+                      </span>{" "}
+                      <span className="text-[rgb(0,237,146)] font-semibold">
+                        {game.percentage}
+                      </span>
                     </TableCell>
                   </TableRow>
                 ))}
@@ -369,44 +387,53 @@ export default function Component() {
             <h2 className="font-semibold text-white text-[28px] tracking-tight ">
               Top collections
             </h2>
-            <Button className="bg-transparent hover:bg-transparent hover:opacity-50 duration-500 transition-all text-[rgb(141,141,141)] flex items-center gap-2 cursor-pointer w-fit p-0">
-              <span>View all</span>
-              <IoIosArrowForward />
-            </Button>
+            <Link href={"/collections"}>
+              <Button className="bg-transparent hover:bg-transparent hover:opacity-50 duration-75 transition-all text-[rgb(141,141,141)] flex items-center gap-2 cursor-pointer w-fit p-0">
+                View all
+                <IoIosArrowForward />
+              </Button>
+            </Link>
           </div>
           <Carousel className="w-full">
             <CarouselContent>
-              {[...Array(15)].map((_, i) => (
-                <CarouselItem key={i} className="md:basis-1/2 lg:basis-1/5">
-                  <Card className="w-[450px] bg-[rgb(10,10,10)] text-white overflow-hidden border-0 opacity-80 transition-opacity duration-300 hover:opacity-100 cursor-pointer">
-                    <div className="relative h-80">
-                      <Image
-                        src={Game}
-                        alt="Game background"
-                        layout="fill"
-                        objectFit="cover"
-                      />
-                    </div>
-                    <CardContent className="p-4 flex flex-col gap-1">
-                      <div className="flex items-center gap-2">
-                        <h2 className="text-lg font-semibold">
-                          Collection name
-                        </h2>
-                        <HiCheckBadge className="text-sky-400"></HiCheckBadge>
+              {collectionList?.map((collection, i) => (
+                <Link href={`/collections/${collection.id}`}>
+                  <CarouselItem
+                    key={collection.id}
+                    className="md:basis-1/2 lg:basis-1/5"
+                  >
+                    <Card className="w-[450px] bg-[rgb(10,10,10)] rounded-lg text-white overflow-hidden border-0 hover:brightness-125 duration-300 cursor-pointer">
+                      <div className="relative h-60">
+                        <Image
+                          src={collection.image}
+                          alt={collection.name}
+                          layout="fill"
+                          objectFit="cover"
+                        />
                       </div>
-                      <div className="flex justify-between gap-2">
-                        <div className="bg-zinc-900 p-2 rounded-md w-full">
-                          <p className="text-sm text-gray-400">Floor</p>
-                          <p className="font-medium">0.25 ETH</p>
+                      <CardContent className="p-4 flex flex-col gap-1">
+                        <div className="flex items-center gap-2">
+                          <h2 className="text-lg font-semibold">
+                            {collection.name}
+                          </h2>
+                          {collection.check && (
+                            <HiCheckBadge className="text-sky-400"></HiCheckBadge>
+                          )}
                         </div>
-                        <div className="bg-zinc-900 p-2 rounded-md w-full">
-                          <p className="text-sm text-gray-400">Volume</p>
-                          <p className="font-medium">$25.5M</p>
+                        <div className="flex justify-between gap-2">
+                          <div className="bg-zinc-900 p-2 rounded-md w-full">
+                            <p className="text-sm text-gray-400">Floor</p>
+                            <p className="font-medium">{collection.floor}</p>
+                          </div>
+                          <div className="bg-zinc-900 p-2 rounded-md w-full">
+                            <p className="text-sm text-gray-400">Volume</p>
+                            <p className="font-medium">{collection.volume}</p>
+                          </div>
                         </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                </Link>
               ))}
             </CarouselContent>
             <CarouselPrevious />
@@ -420,55 +447,62 @@ export default function Component() {
             <h2 className="font-semibold text-white text-[28px] tracking-tight ">
               Top items
             </h2>
-            <Button className="bg-transparent hover:bg-transparent hover:opacity-50 duration-500 transition-all text-[rgb(141,141,141)] flex items-center gap-2 cursor-pointer w-fit p-0">
-              <span>View all</span>
-              <IoIosArrowForward />
-            </Button>
+            <Link href={"/items"}>
+              <Button className="bg-transparent hover:bg-transparent hover:opacity-50 duration-75 transition-all text-[rgb(141,141,141)] flex items-center gap-2 cursor-pointer w-fit p-0">
+                View all
+                <IoIosArrowForward />
+              </Button>
+            </Link>
           </div>
           <Carousel className="w-full">
             <CarouselContent>
-              {[...Array(15)].map((_, i) => (
-                <CarouselItem key={i} className="md:basis-1/2 lg:basis-1/5">
-                  <Card className="w-[330px] rounded-xl bg-[rgb(10,10,10)] text-white overflow-hidden border-0 opacity-80 transition-opacity duration-300 hover:opacity-100 cursor-pointer">
-                    <div className="relative h-80">
-                      <div className="w-full h-full relative">
-                        <Image
-                          src={Item}
-                          alt="Game background"
-                          layout="fill"
-                          objectFit="cover"
-                        />
-                      </div>
-                      <div className="absolute top-4 left-4 bg-violet-700 text-xs px-1 py-[2px] rounded-2xl">
-                        #54
-                      </div>
-                    </div>
-                    <CardContent className="p-4 flex flex-col gap-1">
-                      <div className="flex gap-1 items-center">
-                        <Image
-                          src={Azuki}
-                          alt="Azuki logo"
-                          width={25}
-                          height={25}
-                          className="rounded-full border border-[#ffffff1a]"
-                        />
-                        <p className="text-zinc-400 font-extralight text-xs">
-                          Game Name
-                        </p>
-                      </div>
-                      <h2 className="text-lg font-semibold">Item name</h2>
-                      <div className="flex justify-between gap-2">
-                        <div className="bg-zinc-900 p-2 rounded-md w-full">
-                          <p className="text-sm text-gray-400">Floor</p>
-                          <p className="font-medium">0.25 ETH</p>
+              {itemsList.map((item, i) => (
+                <CarouselItem
+                  key={item.id}
+                  className="md:basis-1/2 lg:basis-1/5"
+                >
+                  <Link key={item.id} href={`/items/${item.id}`}>
+                    <Card className="w-[330px] rounded-xl bg-[rgb(10,10,10)] text-white overflow-hidden border-0 hover:brightness-125 duration-300 cursor-pointer">
+                      <div className="relative h-80">
+                        <div className="w-full h-full relative">
+                          <Image
+                            src={item.image}
+                            alt={item.name + " background"}
+                            layout="fill"
+                            objectFit="cover"
+                          />
                         </div>
-                        <div className="bg-zinc-900 p-2 rounded-md w-full">
-                          <p className="text-sm text-gray-400">Volume</p>
-                          <p className="font-medium">$25.5M</p>
+                        <div className="absolute top-4 left-4 bg-violet-700 text-xs px-1 py-[2px] rounded-2xl">
+                          #{item.id}
                         </div>
                       </div>
-                    </CardContent>
-                  </Card>
+                      <CardContent className="p-4 flex flex-col gap-1">
+                        <div className="flex gap-1 items-center">
+                          <Image
+                            src={item.logo}
+                            alt={item.name + " logo"}
+                            width={25}
+                            height={25}
+                            className="rounded-full border border-[#ffffff1a]"
+                          />
+                          <p className="text-zinc-400 font-extralight text-xs">
+                            {gamesList[i].name}
+                          </p>
+                        </div>
+                        <h2 className="text-lg font-semibold">{item.name}</h2>
+                        <div className="flex justify-between gap-2">
+                          <div className="bg-zinc-900 p-2 rounded-md w-full">
+                            <p className="text-sm text-gray-400">Buy now</p>
+                            <p className="font-medium">{item.floor}</p>
+                          </div>
+                          <div className="bg-zinc-900 p-2 rounded-md w-full">
+                            <p className="text-sm text-gray-400">Last sale</p>
+                            <p className="font-medium">{item.volume}</p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
                 </CarouselItem>
               ))}
             </CarouselContent>
@@ -477,43 +511,6 @@ export default function Component() {
           </Carousel>
         </section>
       </main>
-
-      <footer className="flex-none h-auto max-w-[1080px] relative w-full mx-auto mt-[22px]">
-        <div className="flex items-center flex-col flex-nowrap gap-[44px] min-h justify-center overflow-hidden pt-[54px] pb-[24px] relative">
-          <div className="h-1 border-b border-[rgb(36,36,36)] w-full"></div>
-          <AcmeSVG className="w-[74px] h-[35px]" />
-          <div className="flex px-[30px] gap-[56px]">
-            <div className="flex flex-col gap-[8px]">
-              <h2 className="text-center text-white">Links</h2>
-              <div className="flex gap-[16px] text-white">
-                <p className="text-center font-thin text-sm">Link</p>
-                <p className="text-center font-thin text-sm">Link</p>
-                <p className="text-center font-thin text-sm">Link</p>
-              </div>
-            </div>
-            <div className="flex flex-col gap-[8px]">
-              <h2 className="text-center text-white">Socials</h2>
-              <div className="flex gap-[16px] text-white">
-                <p className="text-center font-thin text-sm">Link</p>
-                <p className="text-center font-thin text-sm">Link</p>
-                <p className="text-center font-thin text-sm">Link</p>
-              </div>
-            </div>
-            <div className="flex flex-col gap-[8px]">
-              <h2 className="text-center text-white">Legal</h2>
-              <div className="flex gap-[16px] text-white">
-                <p className="text-center font-thin text-sm">Link</p>
-                <p className="text-center font-thin text-sm">Link</p>
-                <p className="text-center font-thin text-sm">Link</p>
-              </div>
-            </div>
-          </div>
-
-          <p className="text-[rgb(105,105,105)] text-sm">
-            All rights reserved &copy; Acme
-          </p>
-        </div>
-      </footer>
-    </div>
+    </>
   );
 }

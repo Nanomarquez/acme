@@ -205,7 +205,7 @@ const CarouselPrevious = React.forwardRef<
     <button
       ref={ref}
       className={cn(
-        `absolute w-44 bg-gradient-to-l border-0 from-transparent via-black to-black h-full flex justify-center items-center transition-opacity duration-500 ease-in-out ${!canScrollPrev ? "opacity-0 invisible" : "opacity-100 visible"}`,
+        `absolute w-44 bg-gradient-to-l border-0 from-transparent via-black to-black h-[110%] flex justify-center items-center transition-opacity duration-75 ease-in-out ${!canScrollPrev ? "opacity-0 invisible" : "opacity-100 visible"}`,
         orientation === "horizontal"
           ? "-left-12 top-1/2 -translate-y-1/2"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -232,7 +232,7 @@ const CarouselNext = React.forwardRef<
     <button
       ref={ref}
       className={cn(
-        `absolute w-44 bg-gradient-to-r border-0 from-transparent via-black to-black h-full flex justify-center items-center transition-opacity duration-500 ease-in-out ${!canScrollNext ? "opacity-0 invisible" : "opacity-100 visible"}`,
+        `absolute w-44 bg-gradient-to-r border-0 from-transparent via-black to-black h-[110%] flex justify-center items-center transition-opacity duration-75 ease-in-out ${!canScrollNext ? "opacity-0 invisible" : "opacity-100 visible"}`,
         orientation === "horizontal"
           ? "-right-12 top-1/2 -translate-y-1/2"
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
