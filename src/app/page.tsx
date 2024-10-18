@@ -57,7 +57,7 @@ export default function Component() {
       <main className="min-h-screen w-auto items-center flex flex-col flex-nowrap gap-[22px] h-min justify-start overflow-visible pt-[67px] pb-0 pl-0 pr-0 relative">
         {/* Hero Section */}
         <section className="items-center flex flex-none flex-col flex-wrap gap-[20px] h-min justify-start max-w-[1440px] overflow-hidden pt-[20px] px-[30px] pb-[60px] relative w-full">
-          <div className="flex gap-[10px] justify-center relative w-full">
+          <div className="flex gap-[10px] justify-center relative w-full flex-col md:flex-row">
             <Card className="w-full h-[275px] p-[24px] relative overflow-hidden rounded-3xl border-none bg-transparent">
               <Image
                 src={HeroImg_1}
@@ -99,7 +99,7 @@ export default function Component() {
                     <IoOpenOutline />
                   </div>
                 </div>
-                <div className="flex">
+                <div className="flex flex-col md:flex-row">
                   <div className="flex flex-col gap-[21px] flex-1">
                     <Image
                       src={HeroAvatar}
@@ -277,7 +277,7 @@ export default function Component() {
               ))}
             </div>
           </div>
-          <div className="flex items-center flex-none flex-row flex-nowrap h-min justify-center overflow-hidden p-0 relative w-full gap-[10px]">
+          <div className="flex items-center flex-none flex-nowrap h-min justify-center overflow-hidden p-0 relative w-full gap-[10px] flex-col md:flex-row">
             <Table>
               <TableHeader>
                 <TableRow>
