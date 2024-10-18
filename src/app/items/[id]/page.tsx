@@ -71,12 +71,12 @@ function ItemPage({ params }: { params: { id: string } }) {
               Item name
             </span>
           </div>
-          <div className="flex gap-[43px] w-full text-white">
+          <div className="flex gap-[43px] w-full text-white flex-col md:flex-row">
             <ZoomImage
               src={Item}
               className="w-[440px] h-[440px] rounded-3xl object-cover object-center"
             />
-            <div className="flex flex-col justify-between w-full">
+            <div className="flex flex-col justify-between w-full gap-5">
               <div className="flex justify-between items-center">
                 <div className="flex gap-3 items-center text-[rgb(131,131,131)] text-sm font-bold">
                   <FaRegEye className="w-6 h-6 hover:scale-110 duration-100 cursor-pointer"></FaRegEye>
@@ -163,8 +163,9 @@ function ItemPage({ params }: { params: { id: string } }) {
               </div>
             </div>
           </div>
+
           <Divider></Divider>
-          <div className="flex justify-between w-full gap-4">
+          <div className="flex justify-between w-full gap-4 flex-col md:flex-row">
             <div className="w-full flex flex-col gap-2 text-white">
               <h2 className="font-semibold text-xl">Description</h2>
               <p className="font-light">
@@ -241,7 +242,8 @@ function ItemPage({ params }: { params: { id: string } }) {
               </div>
             </div>
           </div>
-          <div className="flex w-full gap-4 justify-between">
+
+          <div className="flex w-full gap-4 justify-between flex-col md:flex-row">
             <div className="w-full bg-[rgb(10,10,10)] h-[412px] p-3 rounded-lg relative flex flex-col gap-4">
               <div className="flex justify-between items-center">
                 <div className="flex items-center gap-2">
@@ -348,7 +350,7 @@ function ItemPage({ params }: { params: { id: string } }) {
           </div>
           <section className="items-center flex flex-none flex-col flex-wrap gap-[20px] h-min justify-start max-w-[1440px] overflow-hidden pt-0 px-[30px] pb-[60px] relative w-full">
             <div className="flex items-center flex-none flex-row flex-nowrap h-min justify-between overflow-hidden p0 relative w-full">
-              <h2 className="font-semibold text-white text-[28px] tracking-tight ">
+              <h2 className="font-semibold text-white text-[18px] md:text-[28px] tracking-tight ">
                 Items from same collection
               </h2>
               <Link href={"/items"}>

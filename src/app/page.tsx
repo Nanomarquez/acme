@@ -160,14 +160,14 @@ export default function Component() {
         <section className="items-center flex flex-none flex-col flex-wrap gap-[20px] h-min justify-start max-w-[1440px] overflow-hidden pt-0 px-[30px] pb-[60px] relative w-full">
           <div className="flex items-center flex-none flex-row flex-nowrap h-min justify-between overflow-hidden p-0 relative w-full">
             <div className="flex items-center flex-row gap-[15px] h-min justify-center overflow-visible p-0 relative w-min">
-              <GlobalSVG className="w-[60px] h-[60px]" />
+              <GlobalSVG className="w-[30px] md:w-[60px] h-[30px] md:h-[60px]" />
               <h3
                 onClick={() => setActiveTab("trending")}
                 className={`${
                   activeTab === "trending"
                     ? "text-white"
                     : "text-[rgb(156,156,156)]"
-                }  text-[34px] font-semibold tracking-tighter leading-[1.2em] text-nowrap cursor-pointer hover:opacity-70 duration-300`}
+                } text-[20px] md:text-[34px] font-semibold tracking-tighter leading-[1.2em] text-nowrap cursor-pointer hover:opacity-70 duration-300`}
               >
                 Trending
               </h3>
@@ -177,7 +177,7 @@ export default function Component() {
                   activeTab !== "trending"
                     ? "text-white"
                     : "text-[rgb(156,156,156)]"
-                }  text-[34px] font-semibold tracking-tighter leading-[1.2em] text-nowrap cursor-pointer hover:opacity-70 duration-300`}
+                } text-[20px] md:text-[34px] font-semibold tracking-tighter leading-[1.2em] text-nowrap cursor-pointer hover:opacity-70 duration-300`}
               >
                 Most played
               </h3>
@@ -258,7 +258,7 @@ export default function Component() {
         {/* New Games Section */}
         <section className="items-center flex flex-none flex-col flex-wrap gap-[20px] h-min justify-start max-w-[1440px] overflow-hidden pt-0 px-[30px] pb-[60px] relative w-full">
           <div className="flex justify-between items-center w-full">
-            <h2 className="font-semibold text-white text-[28px] tracking-tight ">
+            <h2 className="font-semibold text-white text-[20px] md:text-[28px] tracking-tight ">
               New games
             </h2>
             <div className="flex gap-[10px] items-center">
@@ -384,7 +384,7 @@ export default function Component() {
         {/* Top Collections Section */}
         <section className="items-center flex flex-none flex-col flex-wrap gap-[20px] h-min justify-start max-w-[1440px] overflow-hidden pt-0 px-[30px] pb-[60px] relative w-full">
           <div className="flex items-center flex-none flex-row flex-nowrap h-min justify-between overflow-hidden p0 relative w-full">
-            <h2 className="font-semibold text-white text-[28px] tracking-tight ">
+            <h2 className="font-semibold text-white text-[20px] md:text-[28px] tracking-tight ">
               Top collections
             </h2>
             <Link href={"/collections"}>
@@ -444,7 +444,7 @@ export default function Component() {
         {/* Top Items Section */}
         <section className="items-center flex flex-none flex-col flex-wrap gap-[20px] h-min justify-start max-w-[1440px] overflow-hidden pt-0 px-[30px] pb-[60px] relative w-full">
           <div className="flex items-center flex-none flex-row flex-nowrap h-min justify-between overflow-hidden p0 relative w-full">
-            <h2 className="font-semibold text-white text-[28px] tracking-tight ">
+            <h2 className="font-semibold text-white text-[20px] md:text-[28px] tracking-tight ">
               Top items
             </h2>
             <Link href={"/items"}>

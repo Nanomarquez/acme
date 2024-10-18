@@ -1,29 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import Item from "@/assets/item.jpg";
-import Game from "@/assets/game.jpg";
-import Loot from "@/assets/loot.jpg";
-import Azuki from "@/assets/azuki.jpg";
-import { FaApple, FaRegEye, FaWindows } from "react-icons/fa";
-import { FcLike } from "react-icons/fc";
-import { IoIosArrowForward, IoMdShare } from "react-icons/io";
-import { LuRefreshCcw } from "react-icons/lu";
-import { HiCheckBadge } from "react-icons/hi2";
-import Divider from "@/components/Divider";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import ZoomImage from "@/components/ZoomImage";
-import { buttons, collectionList } from "@/lib/constants";
 import Link from "next/link";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
+import { useDeviceType } from "@/hooks/useDeviceType";
+
+//ICONS
+import { FaApple, FaWindows } from "react-icons/fa";
+import { HiCheckBadge } from "react-icons/hi2";
 import { SiChainlink } from "react-icons/si";
 import { CiCalendar } from "react-icons/ci";
 import { SiUbisoft } from "react-icons/si";
@@ -34,17 +17,35 @@ import { BsTwitterX } from "react-icons/bs";
 import { FaGithub } from "react-icons/fa";
 import { SiBattledotnet } from "react-icons/si";
 
+//ASSETS
+import Item from "@/assets/item.jpg";
+import Game from "@/assets/game.jpg";
+import Loot from "@/assets/loot.jpg";
+import Azuki from "@/assets/azuki.jpg";
+
+//COMPONENTS
+import Divider from "@/components/Divider";
+import ZoomImage from "@/components/ZoomImage";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Card, CardContent } from "@/components/ui/card";
+
+//CONSTANTS
+import { collectionList } from "@/lib/constants";
+
 const images = [Item, Game, Loot, Item, Game, Loot, Item, Game, Loot];
 
 function GamePage({ params }: { params: { id: string } }) {
-  const [activeButton, setActiveButton] = useState<{
-    id: number;
-    label: string;
-  }>(buttons[0]);
+  const device = useDeviceType();
   const [selectedImage, setSelectedImage] = useState(Item);
   return (
     <main className="min-h-screen w-auto items-center flex flex-col flex-nowrap h-min justify-start overflow-visible pt-[67px] pb-0 pl-0 pr-0 relative">
-      <div className="items-center flex flex-none flex-col flex-wrap gap-[20px] h-min justify-start max-w-[1440px] overflow-hidden pt-[20px] px-[30px] pb-[60px] relative w-full">
+      <div className="items-center flex flex-none flex-col flex-wrap gap-[20px] h-min justify-start max-w-[1440px] overflow-hidden pt-[20px] px-[30px] relative w-full">
         <div className="flex items-center gap-[12px] h-min justify-start overflow-visible relative py-2 w-full text-[rgb(105,105,105)]">
           <Link href="/games" className=" text-[14px] leading-[1.2em]">
             Games
@@ -54,7 +55,7 @@ function GamePage({ params }: { params: { id: string } }) {
             Game name
           </span>
         </div>
-        <div className="flex gap-[43px] w-full text-white">
+        <div className="flex gap-[43px] w-full text-white flex-col lg:flex-row">
           <div className="flex flex-1 gap-[71px] flex-col overflow-hidden">
             <div className="relative flex flex-col items-center">
               <ZoomImage
@@ -106,9 +107,13 @@ function GamePage({ params }: { params: { id: string } }) {
           </div>
           <div
             className="flex flex-col justify-between w-full h-[668px]"
-            style={{
-              flex: ".8 0 0px",
-            }}
+            style={
+              device === "mobile" || device === "tablet"
+                ? { flex: "none" }
+                : {
+                    flex: ".8 0 0px",
+                  }
+            }
           >
             <Card className="rounded-xl h-full bg-[rgb(10,10,10)] text-white overflow-hidden border-0">
               <div className="relative h-2/3 flex">

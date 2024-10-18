@@ -11,31 +11,7 @@ import Divider from "@/components/Divider";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import ZoomImage from "@/components/ZoomImage";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import {
-  buttons,
-  charts,
-  gamesList,
-  holders,
-  itemsList,
-} from "@/lib/constants";
-import { FaArrowTrendDown, FaArrowTrendUp } from "react-icons/fa6";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts";
+import { buttons, gamesList, itemsList } from "@/lib/constants";
 import Link from "next/link";
 import {
   Carousel,
@@ -48,10 +24,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 
 function LootboxPage({ params }: { params: { id: string } }) {
-  const [activeButton, setActiveButton] = useState<{
-    id: number;
-    label: string;
-  }>(buttons[0]);
   return (
     <main className="min-h-screen w-auto items-center flex flex-col flex-nowrap h-min justify-start overflow-visible pt-[67px] pb-0 pl-0 pr-0 relative">
       <div className="flex items-center flex-none flex-col flex-nowrap gap-[20px] h-min justify-start max-w-[1440px] overflow-visible relative w-full px-[24px] pt-[32px]">
@@ -65,12 +37,12 @@ function LootboxPage({ params }: { params: { id: string } }) {
               Lootbox name
             </span>
           </div>
-          <div className="flex gap-[43px] w-full text-white">
+          <div className="flex gap-[43px] w-full text-white flex-col md:flex-row">
             <ZoomImage
               src={Loot}
               className="w-[440px] h-[440px] rounded-3xl object-cover object-center"
             />
-            <div className="flex flex-col justify-between w-full">
+            <div className="flex flex-col justify-between w-full gap-4 md:gap-0">
               <div className="flex justify-between items-center">
                 <div className="flex gap-3 items-center text-[rgb(131,131,131)] text-sm font-bold">
                   <FaRegEye className="w-6 h-6 hover:scale-110 duration-100 cursor-pointer"></FaRegEye>
