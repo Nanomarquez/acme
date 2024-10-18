@@ -229,7 +229,7 @@ function GamePage({ params }: { params: { id: string } }) {
           <Carousel className="w-full">
             <CarouselContent>
               {collectionList?.map((collection, i) => (
-                <Link href={`/collections/${collection.id}`}>
+                <Link href={`/collections/${collection.id}`} key={i}>
                   <CarouselItem
                     key={collection.id}
                     className="md:basis-1/2 lg:basis-1/5"
