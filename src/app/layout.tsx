@@ -59,7 +59,8 @@ export default function RootLayout({
                         >
                           <div className="grid grid-cols-2 gap-4 p-6">
                             {menuItems.map((item, index) => (
-                              <div
+                              <Link
+                                href={item.href}
                                 key={index}
                                 className="p-4 hover:bg-[rgba(255,255,255,0.1)] rounded-lg transition-colors duration-300 cursor-pointer"
                               >
@@ -69,7 +70,7 @@ export default function RootLayout({
                                 <p className="text-[rgb(105,105,105)] text-sm">
                                   {item.description}
                                 </p>
-                              </div>
+                              </Link>
                             ))}
                           </div>
                         </motion.div>

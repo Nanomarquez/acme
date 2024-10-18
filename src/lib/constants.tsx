@@ -17,16 +17,23 @@ export const menuItems = [
   {
     title: "Collections",
     description: "Lorem ipsum dolor sit amet consectetur.",
+    href: "/collections",
   },
   {
-    title: "Collections",
+    title: "Items",
     description: "Lorem ipsum dolor sit amet consectetur.",
+    href: "/items",
   },
   {
-    title: "Collections",
+    title: "Games",
     description: "Lorem ipsum dolor sit amet consectetur.",
+    href: "/games",
   },
-  { title: "Items", description: "Lorem ipsum dolor sit amet consectetur." },
+  {
+    title: "Lootboxes",
+    description: "Lorem ipsum dolor sit amet consectetur.",
+    href: "/lootboxes",
+  },
 ];
 
 export const games = [
