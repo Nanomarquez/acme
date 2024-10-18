@@ -106,11 +106,30 @@ function ItemsPage() {
           <div className="flex items-center flex-none flex-row flex-nowrap h-min justify-between overflow-hidden p-0 relative w-full">
             <div className="flex items-center flex-row gap-[15px] h-min justify-center overflow-visible p-0 relative w-min">
               <GlobalSVG className="w-[60px] h-[60px]" />
-              <h3
+              <Link
+                href={"/collections"}
+                className={`text-[rgb(156,156,156)] text-[34px] font-semibold tracking-tighter leading-[1.2em] text-nowrap cursor-pointer hover:opacity-70 duration-300`}
+              >
+                Collections
+              </Link>
+              <Link
+                href={"/games"}
+                className={`text-[rgb(156,156,156)] text-[34px] font-semibold tracking-tighter leading-[1.2em] text-nowrap cursor-pointer hover:opacity-70 duration-300`}
+              >
+                Games
+              </Link>
+              <Link
+                href={"/items"}
                 className={`text-white text-[34px] font-semibold tracking-tighter leading-[1.2em] text-nowrap cursor-pointer hover:opacity-70 duration-300`}
               >
                 Items
-              </h3>
+              </Link>
+              <Link
+                href={"/lootboxes"}
+                className={`text-[rgb(156,156,156)] text-[34px] font-semibold tracking-tighter leading-[1.2em] text-nowrap cursor-pointer hover:opacity-70 duration-300`}
+              >
+                Lootboxes
+              </Link>
             </div>
           </div>
         </div>

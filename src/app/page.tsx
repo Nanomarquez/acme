@@ -79,7 +79,7 @@ export default function Component() {
                 </p>
               </CardContent>
             </Card>
-            <Card className="w-full h-[275px] p-[24px] relative overflow-hidden border-none bg-transparent">
+            <Card className="w-full h-[275px] p-[24px] rounded-3xl relative overflow-hidden border-none bg-transparent">
               <Image
                 src={HeroImg_2}
                 alt="heroimg-2"
@@ -94,9 +94,9 @@ export default function Component() {
                       Spotlight
                     </p>
                   </div>
-                  <div className="flex items-center text-[rgb(141,141,141)] text-[14px] font-[500] cursor-pointer hover:opacity-60 duration-300 gap-1">
+                  <div className="flex items-center text-white/70 text-[14px] font-[500] cursor-pointer hover:opacity-80 duration-300 gap-1">
                     <span>Website</span>
-                    <IoOpenOutline className="text-white" />
+                    <IoOpenOutline />
                   </div>
                 </div>
                 <div className="flex">
