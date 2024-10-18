@@ -192,7 +192,7 @@ export default function Component() {
           <Carousel className="w-full">
             <CarouselContent>
               {gamesList.map((game, i) => (
-                <Link href={`/games/${game.id}`}>
+                <Link href={`/games/${game.id}`} key={i}>
                   <CarouselItem
                     key={game.id}
                     className="md:basis-1/2 lg:basis-1/5 select-none"
@@ -397,7 +397,7 @@ export default function Component() {
           <Carousel className="w-full">
             <CarouselContent>
               {collectionList?.map((collection, i) => (
-                <Link href={`/collections/${collection.id}`}>
+                <Link href={`/collections/${collection.id}`} key={i}>
                   <CarouselItem
                     key={collection.id}
                     className="md:basis-1/2 lg:basis-1/5"

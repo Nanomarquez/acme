@@ -353,7 +353,7 @@ function GamesPage() {
         {/* CARDS */}
         <div className="grid flex-1 gap-[10px] grid-cols-1 md:grid-cols-2 lg:grid-cols-3	h-min justify-center overflow-hidden p-0 ">
           {gamesList.map((game, i) => (
-            <Link href={`/games/${game.id}`}>
+            <Link href={`/games/${game.id}`} key={i}>
               <Card
                 key={game.id}
                 className="rounded-xl bg-[rgb(10,10,10)] text-white overflow-hidden border-0 hover:brightness-125 duration-300 cursor-pointer"
